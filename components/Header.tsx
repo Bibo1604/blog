@@ -39,7 +39,7 @@ export default function Header() {
     const pathname = usePathname();
 
     return (
-        <header className="border border-b-2 mb-8">
+        <header className="mb-10">
             <div className="flex items-center justify-between mx-auto px-7 md:px-10 lg:px-20 py-5">
                 <Link
                     href="/"
