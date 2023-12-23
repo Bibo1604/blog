@@ -25,7 +25,7 @@ export default async function Home() {
     const data: simplifiedBlog[] = await getData();
 
     return (
-        <main className="px-7 md:px-10 lg:px-20">
+        <main className="px-7 md:px-10 lg:px-20 mb-60">
             <Banner />
             <div className="mt-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-20 gap-y-52">

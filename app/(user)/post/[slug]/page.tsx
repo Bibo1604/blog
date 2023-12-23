@@ -28,7 +28,7 @@ export default async function Post({ params: { slug } }: Props) {
     const data: fullBlog = await getData(slug);
 
     return (
-        <article className="max-w-2xl items-center mx-auto px-7 md:px-0">
+        <article className="max-w-2xl items-center mx-auto px-7 md:px-0 pb-20">
             <div className="flex items-center space-x-2 mb-5">
                 {data.categories.map((category) => (
                     <Badge key={category._id}>{category.title}</Badge>
