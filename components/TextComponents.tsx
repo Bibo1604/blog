@@ -28,16 +28,16 @@ export const TextComponents = {
     },
     block: {
         h1: ({ children }: any) => (
-            <h1 className="text-5xl py-10 font-bold">{children}</h1>
+            <h1 className="text-3xl md:text-5xl py-10 font-bold">{children}</h1>
         ),
         h2: ({ children }: any) => (
-            <h2 className="text-4xl py-8 font-bold">{children}</h2>
+            <h2 className="text-2xl md:text-4xl py-8 font-bold">{children}</h2>
         ),
         h3: ({ children }: any) => (
-            <h3 className="text-3xl py-6 font-bold">{children}</h3>
+            <h3 className="text-xl md:text-3xl py-6 font-bold">{children}</h3>
         ),
         h4: ({ children }: any) => (
-            <h4 className="text-2xl py-4 font-bold">{children}</h4>
+            <h4 className="text-lg md:text-2xl py-4 font-bold">{children}</h4>
         ),
         blockquote: ({ children }: any) => (
             <blockquote className="border-l-orange-500 border-l-4 pl-5 py-5 my-5">

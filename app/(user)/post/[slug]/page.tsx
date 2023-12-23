@@ -35,7 +35,7 @@ export default async function Post({ params: { slug } }: Props) {
                 ))}
             </div>
             <div className="space-y-10">
-                <h1 className="text-3xl md:text-5xl font-extrabold">{data.title}</h1>
+                <h1 className="text-4xl md:text-5xl font-extrabold">{data.title}</h1>
 
                 <div className="flex items-center space-x-5">
                     <Image
