@@ -85,9 +85,11 @@ export default function Header() {
                     >
                         <FaInstagram />
                     </Link>
-                    <Button className="hover:bg-orange-500 hidden md:block">
-                        <Link href="/studio">Admin</Link>
-                    </Button>
+                    <Link href="/studio" target="_blank">
+                        <Button className="hover:bg-orange-500 hidden md:block">
+                            Admin
+                        </Button>
+                    </Link>
 
                     <div>
                         <DropdownMenu>

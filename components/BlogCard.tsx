@@ -2,7 +2,7 @@ import { simplifiedBlog } from "@/app/typing"
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
-import category from "@/schemas/category";
+import { urlFor } from "@/app/lib/sanity";
 
 type Props = {
     item: simplifiedBlog;
@@ -10,12 +10,12 @@ type Props = {
 
 export default function BlogCard({ item }: Props) {
     return (
-        <Link href={`/blog/${item.slug}`} className="relative overflow-hidden">
+        <Link href={`/post/${item.slug}`} className="relative overflow-hidden group">
             <div className="h-80">
                 <Image
-                    src={item.image}
+                    src={urlFor(item.image).url()}
                     alt="Blog Image"
-                    className="w-full h-full object-cover object-center hover:scale-105 transition duration-200 opacity-90"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition duration-200 opacity-90"
                     width={300}
                     height={300}
                 />
@@ -37,7 +37,7 @@ export default function BlogCard({ item }: Props) {
 
                     <div className="flex items-center gap-5 mt-3">
                         <Image
-                            src={item.authorImage}
+                            src={urlFor(item.authorImage).url()}
                             alt="Author Image"
                             className="rounded-full object-cover object-top h-12 w-12"
                             width={100}
