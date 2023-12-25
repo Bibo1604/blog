@@ -26,7 +26,7 @@ export interface fullBlog extends Base {
     body: Block[];
 }
 
-interface Author extends Base {
+export interface Author extends Base {
     bio: Block[];
     image: Image;
     name: string;

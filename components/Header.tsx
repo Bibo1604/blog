@@ -25,12 +25,12 @@ const links = [
     },
     {
         text: "About",
-        href: "/aboutme",
+        href: "/about",
         icon: FaRegUser,
     },
     {
-        text: "Marketplace",
-        href: "/marketplace",
+        text: "Authors",
+        href: "/authors",
         icon: FaRegMoneyBillAlt,
     },
 ]
