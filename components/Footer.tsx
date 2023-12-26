@@ -7,7 +7,7 @@ export default function Footer() {
             <nav className="grid grid-flow-col gap-5 items-center justify-center">
                 <Link href="/" className="hover:underline">Home</Link>
                 <Link href="/about" className="hover:underline">About</Link>
-                <Link href="/authors" className="hover:underline">Marketplace</Link>
+                <Link href="/authors" className="hover:underline">Authors</Link>
             </nav>
 
             <nav className="grid grid-flow-col gap-5 items-center justify-center">
