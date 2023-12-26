@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Personal Blog - A Modern Fullstack Blog
+Built with: [Next.js 14 App Router](https://nextjs.org/), TypeScript, [Sanity.io](https://www.sanity.io/), [next-sanity](https://www.npmjs.com/package/next-sanity), [TailwindCSS](https://tailwindcss.com/), and [Shadcn/ui](https://ui.shadcn.com/).
+Production site: [biboblog.vercel.app](https://biboblog.vercel.app/)
 
-## Getting Started
+## Development
 
-First, run the development server:
+### Clone the repository
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```shell
+git clone https://github.com/Bibo1604/blog.git
+```
+
+### Setup local environment file .env
+
+```js
+NEXT_PUBLIC_SANITY_PROJECT_ID=
+NEXT_PUBLIC_SANITY_DATASET=
+NEXT_PUBLIC_SANITY_API_VERSION=
+NEXT_PUBLIC_SANITY_API_READ_TOKEN=
+NEXT_PUBLIC_VERCEL_URL=
+```
+
+### Install packages
+
+```shell
+npm install # Install all packages required
+```
+
+### Start the app
+
+```shell
+npm run dev # Start the development server
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contribute
+To contribute:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Select an issue from the [issue list](https://github.com/Bibo1604/blog/issues) and put on an **in progress** tag.
+2. Run:
+```
+git checkout -b issue-[issue number]        # Create a new branch 'issue-[issue number]'
 
-## Learn More
+# Do your dev work here
 
-To learn more about Next.js, take a look at the following resources:
+git push origin issue-[issue number]        # Push to 'issue-[issue number]' branch
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Please **DO NOT** push code to `main`. When you think your code is ready, feel free to create a Pull Request to the `main` branch and set **Bibo1604** as a reviewer.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

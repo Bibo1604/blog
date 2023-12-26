@@ -4,9 +4,9 @@ import Link from "next/link"
 export default function StudioNavbar(props: any) {
     return (
         <div>
-            <div className="bg-slate-200">
-                <Link href="/" className="text-black flex items-center gap-2 px-4 py-3">
-                    <ArrowUturnLeftIcon className="w-6 h-6 text-black"/>
+            <div className="bg-[#14110e] border-b border-b-[#dca488]">
+                <Link href="/" className="text-white flex items-center gap-2 px-4 py-3">
+                    <ArrowUturnLeftIcon className="w-6 h-6 text-white"/>
                     Go to Website
                 </Link>
             </div>
