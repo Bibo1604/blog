@@ -1,6 +1,6 @@
 import { fullBlog } from "@/app/typing";
 import { sanityFetch } from "@/app/lib/sanity.fetch";
-import LiveQuery from "@sanity/preview-kit/live-query";
+import LiveQuery from 'next-sanity/preview/live-query';
 import BlogPost, { getQuery } from "@/components/BlogPost";
 import { draftMode } from "next/headers";
 import PreviewBlogPost from "@/components/PreviewBlogPost";

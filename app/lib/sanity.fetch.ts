@@ -29,8 +29,9 @@ export async function sanityFetch<QueryResponse>({
             token: token,
             perspective: 'previewDrafts',
         }),
+        // cache: 'force-cache',
         next: {
-            revalidate: isDraftMode ? 0 : false,
+            revalidate: isDraftMode ? 0 : 30,
             tags,
         },
     })
