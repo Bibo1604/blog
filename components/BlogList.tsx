@@ -20,7 +20,7 @@ export const query = `*[_type == "post"] | order(_createdAt desc) {
 export default async function BlogList({ data }: { data: simplifiedBlog[] }) {
     return (
         <section>
-            <div className="mx-auto w-full max-w-7xl px-5 pt-10 md:px-10">
+            <div className="mx-auto w-full max-w-7xl px-0 pt-10 md:px-10">
                 <Link href={`/post/${data[0].slug}`} className="hidden relative mb-12 md:flex max-h-[450px] max-w-full gap-4 overflow-hidden rounded-2xl border border-solid border-[#b1b1b1] bg-[#f5f8ff] font-bold text-black transition hover:[box-shadow:rgb(0,_0,_0)_7px_7px]">
                     <div className="absolute bottom-2 left-2 z-20 flex w-full max-w-[900px] flex-col items-start justify-start rounded-xl bg-white px-6 py-4">
                         {data[0].categories === null ? null : (
