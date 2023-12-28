@@ -2,6 +2,7 @@ export interface simplifiedBlog {
     _id: string;
     image: string;
     title: string;
+    description: string;
     slug: string;
     authorName: string;
     authorImage: string;
@@ -22,6 +23,7 @@ export interface fullBlog extends Base {
     mainImage: Image;
     slug: Slug;
     title: string;
+    description: string;
     author: Author;
     body: Block[];
 }

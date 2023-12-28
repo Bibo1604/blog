@@ -1,4 +1,4 @@
-# Personal Blog - A Modern Fullstack Blog
+# Personal Blog
 Built with: [Next.js 14 App Router](https://nextjs.org/), TypeScript, [Sanity.io](https://www.sanity.io/), [next-sanity](https://www.npmjs.com/package/next-sanity), [TailwindCSS](https://tailwindcss.com/), and [Shadcn/ui](https://ui.shadcn.com/).  
 Production site: [biboblog.vercel.app](https://biboblog.vercel.app/)
 

@@ -9,6 +9,7 @@ export const query = `*[_type == "post"] | order(_createdAt desc) {
     _id,
     "image": mainImage.asset -> url,
     title,
+    description,
     "slug": slug.current,
     "authorName": author -> name,
     "authorImage": author -> image.asset -> url,
@@ -19,53 +20,11 @@ export const query = `*[_type == "post"] | order(_createdAt desc) {
 export default async function BlogList({ data }: { data: simplifiedBlog[] }) {
     return (
         <section>
-            <div className="mx-auto w-full max-w-7xl pt-16">
-                <div className="mx-auto grid justify-items-stretch gap-4 lg:grid-cols-2 lg:gap-10">
-                    <Link href={`/post/${data[0].slug}`} className="relative flex h-[300px] md:h-[250px] items-end [grid-area:1/1/3/2] lg:h-[540px] group">
-                        {data[0].image === null ? (
-                            <div className="w-full h-full bg-slate-200" />
-                        ) : (
-                            <Image
-                                src={urlFor(data[0].image).url()}
-                                alt="Blog Image"
-                                className="inline-block h-full w-full rounded-lg object-cover object-center group-hover:scale-105 transition duration-200"
-                                width={500}
-                                height={500}
-                            />
-                        )}
-
-                        <div className="absolute w-full bottom-0 left-0 flex flex-col justify-center rounded bg-white bg-opacity-50 backdrop-blur-lg px-5 py-2">
-                            <h1 className="mb-1 text-lg font-bold line-clamp-2">{data[0].title}</h1>
-                            <div className="flex items-center gap-5 mt-1">
-                                {data[0].authorImage === null ? (
-                                    <div className="rounded-full bg-slate-200 h-12 w-12"></div>
-                                ) : (
-                                    <Image
-                                        src={urlFor(data[0].authorImage).url()}
-                                        alt="Author Image"
-                                        className="rounded-full object-cover object-top h-12 w-12"
-                                        width={100}
-                                        height={100}
-                                    />
-                                )}
-
-                                <div>
-                                    <p className="text-sm mb-1">{data[0].authorName === null ? "Author name" : data[0].authorName}</p>
-                                    <p className="text-sm">
-                                        {new Date(data[0]._createdAt).toLocaleDateString(
-                                            "en-US", {
-                                            day: "numeric",
-                                            month: "long",
-                                            year: "numeric"
-                                        }
-                                        )}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
+            <div className="mx-auto w-full max-w-7xl px-5 pt-10 md:px-10">
+                <Link href={`/post/${data[0].slug}`} className="hidden relative mb-12 md:flex max-h-[450px] max-w-full gap-4 overflow-hidden rounded-2xl border border-solid border-[#b1b1b1] bg-[#f5f8ff] font-bold text-black transition hover:[box-shadow:rgb(0,_0,_0)_7px_7px]">
+                    <div className="absolute bottom-2 left-2 z-20 flex w-full max-w-[900px] flex-col items-start justify-start rounded-xl bg-white px-6 py-4">
                         {data[0].categories === null ? null : (
-                            <div className="absolute flex gap-2 mt-1 top-3 right-3">
+                            <div className="flex gap-2 mb-2">
                                 {data[0].categories.map((category: any) => (
                                     <Badge
                                         key={category._id}
@@ -76,138 +35,109 @@ export default async function BlogList({ data }: { data: simplifiedBlog[] }) {
                                 ))}
                             </div>
                         )}
-                    </Link>
-
-                    <Link href={`/post/${data[1].slug}`} className="relative flex h-[300px] md:h-[250px] items-end group">
-                        {data[1].image === null ? (
-                            <div className="w-full h-full bg-slate-200" />
-                        ) : (
-                            <Image
-                                src={urlFor(data[1].image).url()}
-                                alt="Blog Image"
-                                className="inline-block h-full w-full rounded-lg object-cover object-center group-hover:scale-105 transition duration-200"
-                                width={500}
-                                height={500}
-                            />
-                        )}
-
-                        <div className="absolute w-full bottom-0 left-0 flex flex-col justify-center rounded bg-white bg-opacity-50 backdrop-blur-lg px-5 py-2">
-                            <h1 className="mb-1 text-lg font-bold line-clamp-2">{data[1].title}</h1>
-                            <div className="flex items-center gap-5 mt-1">
-                                {data[1].authorImage === null ? (
-                                    <div className="rounded-full bg-slate-200 h-12 w-12"></div>
-                                ) : (
-                                    <Image
-                                        src={urlFor(data[1].authorImage).url()}
-                                        alt="Author Image"
-                                        className="rounded-full object-cover object-top h-12 w-12"
-                                        width={100}
-                                        height={100}
-                                    />
-                                )}
-
-                                <div>
-                                    <p className="text-sm mb-1">{data[1].authorName === null ? "Author name" : data[1].authorName}</p>
-                                    <p className="text-sm">
-                                        {new Date(data[1]._createdAt).toLocaleDateString(
-                                            "en-US", {
-                                            day: "numeric",
-                                            month: "long",
-                                            year: "numeric"
-                                        }
-                                        )}
-                                    </p>
-                                </div>
+                        <p className="mb-2 text-lg font-semibold">{data[0].title}</p>
+                        <p className="mb-3 font-normal text-[#636262] line-clamp-2">{data[0].description ? data[0].description : null}</p>
+                        <div className="flex flex-row items-center text-left">
+                            {data[0].authorImage === null ? (
+                                <div className="rounded-full bg-slate-200 h-12 w-12"></div>
+                            ) : (
+                                <Image
+                                    src={urlFor(data[0].authorImage).url()}
+                                    alt="Author Image"
+                                    className="mr-4 inline-block h-16 w-16 rounded-full object-cover object-top"
+                                    width={100}
+                                    height={100}
+                                />
+                            )}
+                            <div className="flex flex-col items-start">
+                                <h6 className="text-base font-semibold">{data[0].authorName}</h6>
+                                <p className="text-sm text-[#636262]">
+                                    {new Date(data[0]._createdAt).toLocaleDateString(
+                                        "en-US", {
+                                        day: "numeric",
+                                        month: "long",
+                                        year: "numeric"
+                                    })}
+                                </p>
                             </div>
                         </div>
-
-                        {data[1].categories === null ? null : (
-                            <div className="absolute flex gap-2 mt-1 top-3 right-3">
-                                {data[1].categories.map((category: any) => (
-                                    <Badge
-                                        key={category._id}
-                                    >
-                                        {category.title}
-                                    </Badge>
-
-                                ))}
-                            </div>
-                        )}
-                    </Link>
-
-
-                    <Link href={`/post/${data[2].slug}`} className="relative flex h-[300px] md:h-[250px] items-end group">
-                        {data[2].image === null ? (
-                            <div className="w-full h-full bg-slate-200" />
-                        ) : (
-                            <Image
-                                src={urlFor(data[2].image).url()}
-                                alt="Blog Image"
-                                className="inline-block h-full w-full rounded-lg object-cover object-center group-hover:scale-105 transition duration-200"
-                                width={500}
-                                height={500}
-                            />
-                        )}
-
-                        <div className="absolute w-full bottom-0 left-0 flex flex-col justify-center rounded bg-white bg-opacity-50 backdrop-blur-lg px-5 py-2">
-                            <h1 className="mb-1 text-lg font-bold line-clamp-2">{data[2].title}</h1>
-                            <div className="flex items-center gap-5 mt-1">
-                                {data[2].authorImage === null ? (
-                                    <div className="rounded-full bg-slate-200 h-12 w-12"></div>
-                                ) : (
-                                    <Image
-                                        src={urlFor(data[2].authorImage).url()}
-                                        alt="Author Image"
-                                        className="rounded-full object-cover object-top h-12 w-12"
-                                        width={100}
-                                        height={100}
-                                    />
-                                )}
-
-                                <div>
-                                    <p className="text-sm mb-1">{data[2].authorName === null ? "Author name" : data[2].authorName}</p>
-                                    <p className="text-sm">
-                                        {new Date(data[2]._createdAt).toLocaleDateString(
-                                            "en-US", {
-                                            day: "numeric",
-                                            month: "long",
-                                            year: "numeric"
-                                        }
-                                        )}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {data[2].categories === null ? null : (
-                            <div className="absolute flex gap-2 mt-1 top-3 right-3">
-                                {data[2].categories.map((category: any) => (
-                                    <Badge
-                                        key={category._id}
-                                    >
-                                        {category.title}
-                                    </Badge>
-
-                                ))}
-                            </div>
-                        )}
-                    </Link>
-                </div>
-
-                <div className="hidden md:block border-b-2 border-b-slate-200 py-3 mt-20">
-                    <p className="text-slate-500">Recent Articles</p>
-                </div>
-
-                <div className="mt-4 md:mt-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-10">
-                        {data.slice(3).map((item) => (
-                            <div key={item._id}>
-                                <BlogCard item={item} />
-                            </div>
-                        ))}
                     </div>
+                    {data[0].image === null ? (
+                        <div className="w-full h-60 bg-slate-200" />
+                    ) : (
+                        <Image
+                            src={urlFor(data[0].image).url()}
+                            alt="Blog Image"
+                            className="inline-block h-full w-full rounded-lg object-cover object-center group-hover:scale-105 transition duration-200"
+                            width={500}
+                            height={500}
+                        />
+                    )}
+                </Link>
+
+                <div className="grid [grid-auto-rows:1fr] w-full grid-cols-1 md:mb-12 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:mb-16">
+                    <Link href={`/post/${data[0].slug}`} className="group h-full flex md:hidden flex-col gap-4 rounded-2xl border border-solid border-[#b1b1b1] bg-[#f5f8ff] p-6 font-bold text-black transition hover:[box-shadow:rgb(0,_0,_0)_7px_7px]">
+                        {data[0].image === null ? (
+                            <div className="w-full h-60 bg-slate-200" />
+                        ) : (
+                            <Image
+                                src={urlFor(data[0].image).url()}
+                                alt="Blog Image"
+                                className="inline-block h-60 w-full rounded-lg object-cover object-center group-hover:scale-105 transition duration-200"
+                                width={500}
+                                height={500}
+                            />
+                        )}
+
+                        <div className="w-full">
+                            {data[0].categories === null ? null : (
+                                <div className="flex gap-2 mt-1 mb-2">
+                                    {data[0].categories.map((category: any) => (
+                                        <Badge
+                                            key={category._id}
+                                        >
+                                            {category.title}
+                                        </Badge>
+
+                                    ))}
+                                </div>
+                            )}
+                            <p className="mb-3 text-lg font-semibold">{data[0].title}</p>
+                            <p className="mb-5 font-normal text-[#636262] lg:mb-8 line-clamp-2">{data[0].description ? data[0].description : null}</p>
+                            <div className="mx-auto flex max-w-[480px] flex-row items-center text-left">
+                                {data[0].authorImage === null ? (
+                                    <div className="rounded-full bg-slate-200 h-12 w-12"></div>
+                                ) : (
+                                    <Image
+                                        src={urlFor(data[0].authorImage).url()}
+                                        alt="Author Image"
+                                        className="mr-4 inline-block h-16 w-16 rounded-full object-cover object-top"
+                                        width={100}
+                                        height={100}
+                                    />
+                                )}
+                                <div className="flex flex-col items-start">
+                                    <h6 className="text-base font-semibold">{data[0].authorName}</h6>
+                                    <p className="text-sm text-[#636262]">
+                                        {new Date(data[0]._createdAt).toLocaleDateString(
+                                            "en-US", {
+                                            day: "numeric",
+                                            month: "long",
+                                            year: "numeric"
+                                        })}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+
+                    {data.slice(1).map((item) => (
+                        <div key={data[0]._id}>
+                            <BlogCard item={item} />
+                        </div>
+                    ))}
                 </div>
-            </div >
+            </div>
         </section >
     )
 }
