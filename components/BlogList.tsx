@@ -132,7 +132,7 @@ export default async function BlogList({ data }: { data: simplifiedBlog[] }) {
                     </Link>
 
                     {data.slice(1).map((item) => (
-                        <div key={data[0]._id}>
+                        <div key={item._id}>
                             <BlogCard item={item} />
                         </div>
                     ))}
