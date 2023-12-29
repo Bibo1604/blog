@@ -43,7 +43,7 @@ export default function Header() {
             <div className="flex items-center justify-between mx-auto px-7 md:px-10 lg:px-20 py-5">
                 <Link
                     href="/"
-                    className="text-3xl md:text-4xl font-bold text-orange-500"
+                    className="text-3xl md:text-4xl font-bold text-black"
                 >
                     BIBO
                 </Link>
@@ -53,14 +53,14 @@ export default function Header() {
                             {pathname === link.href ? (
                                 <Link
                                     href={link.href}
-                                    className="text-lg font-semibold text-orange-500"
+                                    className="text-lg font-semibold border-b-[3px] border-b-black py-1"
                                 >
                                     {link.text}
                                 </Link>
                             ) : (
                                 <Link
                                     href={link.href}
-                                    className="text-lg font-semibold text-black hover:text-orange-500 transition duration-100"
+                                    className="text-lg font-semibold text-black hover:border-b-[3px] hover:border-b-black py-1 transition duration-100"
                                 >
                                     {link.text}
                                 </Link>
@@ -74,19 +74,19 @@ export default function Header() {
                     <Link
                         href="https://www.facebook.com/"
                         target="_blank"
-                        className="text-2xl hover:text-orange-500"
+                        className="text-2xl hover:text-blue-500"
                     >
                         <FaFacebook />
                     </Link>
                     <Link
                         href="https://www.instagram.com/"
                         target="_blank"
-                        className="text-2xl hover:text-orange-500"
+                        className="text-2xl hover:text-pink-500"
                     >
                         <FaInstagram />
                     </Link>
                     <Link href="/studio" target="_blank">
-                        <Button className="hover:bg-orange-500 hidden md:block">
+                        <Button className="hidden md:block">
                             Admin
                         </Button>
                     </Link>
@@ -94,7 +94,7 @@ export default function Header() {
                     <div>
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
-                                <Button className="md:hidden hover:bg-orange-500"><CiMenuBurger /></Button>
+                                <Button className="md:hidden"><CiMenuBurger /></Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="w-56 mt-3">
                                 <DropdownMenuLabel>Menu Options</DropdownMenuLabel>
@@ -110,7 +110,7 @@ export default function Header() {
                                                     className="flex gap-3 items-center"
                                                 >
                                                     <link.icon className="text-lg" />
-                                                    <span className="text-orange-500">{link.text}</span>
+                                                    <span>{link.text}</span>
                                                 </Link>
                                             ) : (
                                                 <Link

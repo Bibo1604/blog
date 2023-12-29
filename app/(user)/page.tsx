@@ -13,8 +13,8 @@ export default async function Home() {
     const data = await sanityFetch<simplifiedBlog[]>({ query, tags: ['post'] })
 
     return (
-        <main className="px-7 md:px-10 lg:px-20 mb-60 min-h-screen">
-            <Banner />
+        <main className="px-7 md:px-10 lg:px-20 mb-24 min-h-screen">
+            {/* <Banner /> */}
             <LiveQuery
                 enabled={draftMode().isEnabled}
                 query={query}
