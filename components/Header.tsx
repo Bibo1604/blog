@@ -6,6 +6,7 @@ import { FaFacebook, FaInstagram, FaRegUser, FaRegMoneyBillAlt } from "react-ico
 import { CiMenuBurger } from "react-icons/ci";
 import { RiAdminLine } from "react-icons/ri";
 import { IoHomeOutline } from "react-icons/io5";
+import { Moon, Sun } from "lucide-react";
 import { Button } from "./ui/button";
 import {
     DropdownMenu,
@@ -16,6 +17,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useTheme } from "next-themes";
 
 const links = [
     {
@@ -37,13 +39,14 @@ const links = [
 
 export default function Header() {
     const pathname = usePathname();
+    const {setTheme} = useTheme();
 
     return (
         <header className="mb-4">
             <div className="flex items-center justify-between mx-auto px-7 md:px-10 lg:px-20 py-5">
                 <Link
                     href="/"
-                    className="text-3xl md:text-4xl font-bold text-black"
+                    className="text-3xl md:text-4xl font-bold"
                 >
                     BIBO
                 </Link>
@@ -53,14 +56,14 @@ export default function Header() {
                             {pathname === link.href ? (
                                 <Link
                                     href={link.href}
-                                    className="text-lg font-semibold border-b-[3px] border-b-black py-1"
+                                    className="text-lg font-semibold border-b-[3px] border-b-black dark:border-b-white py-1"
                                 >
                                     {link.text}
                                 </Link>
                             ) : (
                                 <Link
                                     href={link.href}
-                                    className="text-lg font-semibold text-black hover:border-b-[3px] hover:border-b-black py-1 transition duration-100"
+                                    className="text-lg font-semibold hover:border-b-[3px] dark:hover:border-b-white hover:border-b-black py-1 transition duration-100"
                                 >
                                     {link.text}
                                 </Link>
@@ -74,14 +77,14 @@ export default function Header() {
                     <Link
                         href="https://www.facebook.com/"
                         target="_blank"
-                        className="text-2xl hover:text-blue-500"
+                        className="text-2xl hover:text-blue-500 hidden md:block"
                     >
                         <FaFacebook />
                     </Link>
                     <Link
                         href="https://www.instagram.com/"
                         target="_blank"
-                        className="text-2xl hover:text-pink-500"
+                        className="text-2xl hover:text-pink-500 hidden md:block"
                     >
                         <FaInstagram />
                     </Link>
@@ -90,6 +93,27 @@ export default function Header() {
                             Admin
                         </Button>
                     </Link>
+
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="outline" size="icon">
+                                <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                                <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                                <span className="sr-only">Toggle theme</span>
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                            <DropdownMenuItem onClick={() => setTheme("light")}>
+                                Light
+                            </DropdownMenuItem>
+                            <DropdownMenuItem onClick={() => setTheme("dark")}>
+                                Dark
+                            </DropdownMenuItem>
+                            <DropdownMenuItem onClick={() => setTheme("system")}>
+                                System
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
 
                     <div>
                         <DropdownMenu>

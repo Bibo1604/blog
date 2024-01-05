@@ -7,6 +7,7 @@ import Footer from '@/components/Footer'
 import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
 import { token } from '../lib/sanity.fetch'
+import { ThemeProvider } from '@/components/ThemeProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,21 +23,28 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  
+
   return (
     <html lang="en">
       <body className={`${inter.className}`}>
-        {/* Header */}
-        <Header />
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          {/* Header */}
+          <Header />
 
-        {draftMode().isEnabled ? (
-          <PreviewProvider token={token}>{children}</PreviewProvider>
-        ) : (
-          children
-        )}
+          {draftMode().isEnabled ? (
+            <PreviewProvider token={token}>{children}</PreviewProvider>
+          ) : (
+            children
+          )}
 
-        {/* Footer */}
-        <Footer />
+          {/* Footer */}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

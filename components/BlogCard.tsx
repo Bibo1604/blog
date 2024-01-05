@@ -10,14 +10,14 @@ type Props = {
 
 export default function BlogCard({ item }: Props) {
     return (
-        <Link href={`/post/${item.slug}`} className="group h-full flex flex-col gap-4 rounded-2xl border border-solid border-[#b1b1b1] bg-[#f5f8ff] p-6 font-bold text-black transition hover:[box-shadow:rgb(0,_0,_0)_7px_7px]">
+        <Link href={`/post/${item.slug}`} className="group h-full flex flex-col gap-4 bg-gray-200 dark:bg-slate-100 p-6 font-bold text-black transition hover:[box-shadow:rgb(0,_0,_0)_7px_7px] dark:hover:[box-shadow:rgb(148,_163,_184)_7px_7px]">
             {item.image === null ? (
                 <div className="w-full h-60 bg-slate-200" />
             ) : (
                 <Image
                     src={urlFor(item.image).url()}
                     alt="Blog Image"
-                    className="inline-block h-60 w-full rounded-lg object-cover object-center group-hover:scale-105 transition duration-200"
+                    className="inline-block h-60 w-full object-cover object-center group-hover:scale-105 transition duration-200"
                     width={500}
                     height={500}
                 />
@@ -29,6 +29,7 @@ export default function BlogCard({ item }: Props) {
                         {item.categories.map((category: any) => (
                             <Badge
                                 key={category._id}
+                                className=" dark:bg-black dark:text-white"
                             >
                                 {category.title}
                             </Badge>
